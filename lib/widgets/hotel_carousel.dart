@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travel_app/models/destination_model.dart';
 import 'package:travel_app/models/hotel_model.dart';
 
 class HotelCarousel extends StatelessWidget {
@@ -45,7 +43,7 @@ class HotelCarousel extends StatelessWidget {
               Hotel hotel = hotels[index];
               return Container(
                 margin: EdgeInsets.all(10),
-                width: 210,
+                width: 300,
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: <Widget>[
@@ -53,7 +51,7 @@ class HotelCarousel extends StatelessWidget {
                       bottom: 15,
                       child: Container(
                         height: 120,
-                        width: 200,
+                        width: 290,
                         decoration: BoxDecoration(
                           color: CupertinoColors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -101,14 +99,14 @@ class HotelCarousel extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             child: Image(
                               height: 180,
-                              width: 180,
+                              width: 260,
                               image: AssetImage(hotel.imageUrl),
                               fit: BoxFit.cover,
                             ),
                           ),
                           Container(
                             height: 180,
-                            width: 180,
+                            width: 260,
                             decoration: BoxDecoration(
                               color: Colors.black45,
                               borderRadius: BorderRadius.circular(20),
@@ -121,7 +119,7 @@ class HotelCarousel extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  '${hotel.price}',
+                                  '\$${hotel.price} / Night',
                                   style: TextStyle(
                                       color: CupertinoColors.white,
                                       fontSize: 24,
