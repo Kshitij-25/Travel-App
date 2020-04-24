@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/models/destination_model.dart';
 
 class DestinationCarousel extends StatelessWidget {
@@ -36,7 +37,6 @@ class DestinationCarousel extends StatelessWidget {
         ),
         Container(
           height: 300,
-          color: CupertinoColors.activeBlue,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: destinations.length,
@@ -45,36 +45,104 @@ class DestinationCarousel extends StatelessWidget {
               return Container(
                 margin: EdgeInsets.all(10),
                 width: 210,
-                color: CupertinoColors.destructiveRed,
                 child: Stack(
+                  alignment: Alignment.topCenter,
                   children: <Widget>[
+                    Positioned(
+                      bottom: 15,
+                      child: Container(
+                        height: 120,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          color: CupertinoColors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                '${destination.activities.length} activities',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 1.2,
+                                ),
+                              ),
+                              Text(
+                                '${destination.description}',
+                                style: TextStyle(
+                                  color: CupertinoColors.systemGrey,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                     Container(
-                      height: 120,
-                      width: 200,
                       decoration: BoxDecoration(
                         color: CupertinoColors.white,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: CupertinoColors.black,
+                            offset: Offset(0, 2),
+                            blurRadius: 6,
+                          ),
+                        ],
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Stack(
                         children: <Widget>[
-                          Text(
-                            '${destination.activities.length} activities',
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1.2,
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image(
+                              height: 180,
+                              width: 180,
+                              image: AssetImage(destination.imageUrl),
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          Text(
-                            '${destination.description}',
-                            style: TextStyle(
-                              color: CupertinoColors.systemGrey,
+                          Positioned(
+                            left: 10,
+                            bottom: 10,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  '${destination.city}',
+                                  style: TextStyle(
+                                      color: CupertinoColors.white,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 1.2),
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      FontAwesomeIcons.locationArrow,
+                                      size: 10,
+                                      color: CupertinoColors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Text(
+                                      '${destination.country}',
+                                      style: TextStyle(
+                                        color: CupertinoColors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           )
                         ],
                       ),
-                    ),
+                    )
                   ],
                 ),
               );
