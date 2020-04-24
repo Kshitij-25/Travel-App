@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectIndex = 0;
+  int _currentTab = 0;
   List<IconData> _icons = [
     FontAwesomeIcons.plane,
     FontAwesomeIcons.bed,
@@ -45,8 +46,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: SafeArea(
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        backgroundColor: Color(0xFFF3F5F7),
+        currentIndex: _currentTab,
+        onTap: (int value) {
+          setState(() {
+            _currentTab = value;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.search,
+              size: 30,
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.local_pizza,
+              size: 30,
+            ),
+          ),
+          BottomNavigationBarItem(
+              icon: CircleAvatar(
+            radius: 15,
+            backgroundImage: NetworkImage('http://i.imgur.com/zL4Krbz.jpg'),
+          )),
+        ],
+      ),
+      tabBuilder: (context, ind) => SafeArea(
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 10),
           children: <Widget>[
