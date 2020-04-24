@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/models/destination_model.dart';
+import 'package:travel_app/models/hotel_model.dart';
 
-class DestinationCarousel extends StatelessWidget {
+class HotelCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,7 +15,7 @@ class DestinationCarousel extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'Top Destinations',
+                'Exclusive Hotel',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -39,9 +40,9 @@ class DestinationCarousel extends StatelessWidget {
           height: 300,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: destinations.length,
+            itemCount: hotels.length,
             itemBuilder: (context, index) {
-              Destination destination = destinations[index];
+              Hotel hotel = hotels[index];
               return Container(
                 margin: EdgeInsets.all(10),
                 width: 210,
@@ -64,7 +65,7 @@ class DestinationCarousel extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                '${destination.activities.length} activities',
+                                '${hotel.name}',
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.w600,
@@ -72,7 +73,7 @@ class DestinationCarousel extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                '${destination.description}',
+                                '${hotel.address}',
                                 style: TextStyle(
                                   color: CupertinoColors.systemGrey,
                                 ),
@@ -101,7 +102,7 @@ class DestinationCarousel extends StatelessWidget {
                             child: Image(
                               height: 180,
                               width: 180,
-                              image: AssetImage(destination.imageUrl),
+                              image: AssetImage(hotel.imageUrl),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -120,34 +121,34 @@ class DestinationCarousel extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  '${destination.city}',
+                                  '${hotel.price}',
                                   style: TextStyle(
                                       color: CupertinoColors.white,
                                       fontSize: 24,
                                       fontWeight: FontWeight.w600,
                                       letterSpacing: 1.2),
                                 ),
-                                Row(
-                                  children: <Widget>[
-                                    Icon(
-                                      FontAwesomeIcons.locationArrow,
-                                      size: 10,
-                                      color: CupertinoColors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    Text(
-                                      '${destination.country}',
-                                      style: TextStyle(
-                                        color: CupertinoColors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                // Row(
+                                //   children: <Widget>[
+                                //     Icon(
+                                //       FontAwesomeIcons.locationArrow,
+                                //       size: 10,
+                                //       color: CupertinoColors.white,
+                                //     ),
+                                //     SizedBox(
+                                //       width: 15,
+                                //     ),
+                                //     Text(
+                                //       '${destination.country}',
+                                //       style: TextStyle(
+                                //         color: CupertinoColors.white,
+                                //       ),
+                                //     ),
+                                //   ],
+                                // ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     )
