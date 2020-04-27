@@ -14,6 +14,15 @@ class DestinationScreen extends StatefulWidget {
 }
 
 class _DestinationScreenState extends State<DestinationScreen> {
+  Text _buildRatingStars(int rating) {
+    String stars = '';
+    for (int i = 0; i < rating; i++) {
+      stars += '⭐ ';
+    }
+      stars.trim();
+    return Text(stars);
+  }
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -135,15 +144,17 @@ class _DestinationScreenState extends State<DestinationScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
-                                  activity.name,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
+                                Container(
+                                  width: 120,
+                                  child: Text(
+                                    activity.name,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  softWrap: true,
                                 ),
                                 Column(
                                   children: <Widget>[
@@ -170,7 +181,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                 color: CupertinoColors.systemGrey,
                               ),
                             ),
-                            // _buildRatingStars(activity.rating)
+                            _buildRatingStars(activity.rating),
                             SizedBox(
                               height: 10,
                             ),
