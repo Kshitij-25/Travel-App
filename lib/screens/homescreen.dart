@@ -76,6 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       tabBuilder: (context, ind) => SafeArea(
+        bottom: false,
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 10),
           children: <Widget>[

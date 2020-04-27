@@ -146,7 +146,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   children: <Widget>[
                     Container(
                       margin: EdgeInsets.fromLTRB(40, 5, 20, 5),
-                      height: 170,
+                      height: 200,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: CupertinoColors.white,
@@ -207,7 +207,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                               children: <Widget>[
                                 Container(
                                   padding: EdgeInsets.all(5),
-                                  width: 70,
+                                  width: 90,
                                   decoration: BoxDecoration(
                                     color: Color(0xFFD8ECF1),
                                     borderRadius: BorderRadius.circular(10),
@@ -221,7 +221,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                   width: 10,
                                 ),
                                 Container(
-                                  width: 70,
+                                  width: 90,
                                   padding: EdgeInsets.all(5),
                                   decoration: BoxDecoration(
                                     color: Color(0xFFD8ECF1),
