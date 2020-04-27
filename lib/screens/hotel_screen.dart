@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/models/activity_model.dart';
 import 'package:travel_app/models/destination_model.dart';
+import 'package:travel_app/models/hotel_model.dart';
 
-class DestinationScreen extends StatefulWidget {
-  static const routeName = '/destinationScreen';
+class HotelScreen extends StatefulWidget {
+  final Hotel hotel;
   final Destination destination;
 
-  const DestinationScreen({Key key, this.destination}) : super(key: key);
+  const HotelScreen({Key key, this.hotel, this.destination}) : super(key: key);
   @override
-  _DestinationScreenState createState() => _DestinationScreenState();
+  _HotelScreenState createState() => _HotelScreenState();
 }
 
-class _DestinationScreenState extends State<DestinationScreen> {
+class _HotelScreenState extends State<HotelScreen> {
   Text _buildRatingStars(int rating) {
     String stars = '';
     for (int i = 0; i < rating; i++) {
@@ -62,7 +63,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   ],
                 ),
                 child: Hero(
-                  tag: widget.destination.imageUrl,
+                  tag: widget.hotel.imageUrl,
                   child: Stack(
                     children: <Widget>[
                       Positioned.fill(
@@ -72,7 +73,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             bottomRight: Radius.circular(30),
                           ),
                           child: Image(
-                            image: AssetImage('${widget.destination.imageUrl}'),
+                            image: AssetImage('${widget.hotel.imageUrl}'),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -97,7 +98,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      '${widget.destination.city}',
+                      '${widget.hotel.name}',
                       style: TextStyle(
                           color: CupertinoColors.white,
                           fontSize: 35,
@@ -115,7 +116,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                           width: 15,
                         ),
                         Text(
-                          '${widget.destination.country}',
+                          '${widget.hotel.address}',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white70,
